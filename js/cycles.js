@@ -48,7 +48,7 @@ for (let i = 0; i < 5; i++) {
 
 
 let isNumber = function(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n); //*isFinite - если его параметр являеться не числом вернет false если числом true
+    return !isNaN(parseInt(n)) && isFinite(n); //*isFinite - если его параметр являеться не числом вернет false если числом true
 };
 
 
@@ -64,6 +64,7 @@ let start = function() {
 };
 
 start();
+
 
 
 
