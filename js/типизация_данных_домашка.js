@@ -1,21 +1,19 @@
 "use strict";
 
-const money = prompt("Ваш месячный доход?", "");
-
-const addExpenses = prompt(
-  "Перечислите возможные расходы за рассчитываемый период через запятую",
-  "квартплата, проездной, кредит"
-);
-
+const money = +prompt("Ваш месячный доход?", "");
+const addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую");
 const deposit = confirm("Есть ли у вас депозит в банке?");
+const expenses1 = prompt('Введите обязательную статью расходов?');
+const expenses2 = prompt('Введите обязательную статью расходов?');
+const amount1 = +prompt('Во сколько' + expenses1 + 'обойдеться?');
+const amount2 = +prompt('Во сколько' + expenses2 + 'обойдеться?');
+const mission = 100000;
+const period = 12;
 
-const god = prompt("Сколько тебе лет?", "");
+console.log(addExpenses.toLowerCase().split(', '));
 
-const name = prompt("Как твое имя?", "");
 
-const item = prompt("Как твое настроение?", "");
 
-const title = prompt("Как погода?", "");
 
 const budgetMonth = 15000;
 console.log("Примерно" + " " + Math.round(budgetMonth) + " " + "месяцев");
