@@ -1,20 +1,33 @@
 "use strict";
 
-const money = +prompt("Ваш месячный доход?", "");
+const money = prompt("Ваш месячный доход?", "");
 const income = "Фриланс";
 const addExpenses = prompt(
   "Перечислите возможные расходы за рассчитываемый период через запятую",
   ""
 );
 const deposit = confirm("Есть ли у вас депозит в банке?", "");
-const expenses1 = prompt("Введите обязательную статью расходов?", "");
-const expenses2 = prompt("Введите обязательную статью расходов?", "");
 const amount1 = +prompt("Во сколько это обойдется?", "");
 const amount2 = +prompt("Во сколько это обойдется?", "");
 const mission = 100000;
 const period = 12;
 
 console.log(addExpenses.toLowerCase().split(", "));
+
+
+let start = function() {
+
+  if(isNaN(money)) {  //функция isNaN проверяет являеться переданый ей параметр числом или нет. Вернет true если параметр не являеться числом, если являеться числом то false.
+    money = prompt("Ваш месячный доход?", "");
+    console.log('Истина');
+  }else {
+    console.log('лож');
+  }
+};
+
+start();
+
+
 
 const showTypeOf = function (data) {
   console.log(data, typeof data);
@@ -24,15 +37,27 @@ showTypeOf(money);
 showTypeOf(deposit);
 showTypeOf(income);
 
-function getExpensesMonth() {
-  return amount1 + amount2;
-}
+let expenses = [];
 
-const expensesMonth = getExpensesMonth();
-console.log("Сумма всех обязательных рассходов за месяц:" + expensesMonth);
+function getExpensesMonth() {
+  let sum = 0;
+
+  for(let i = 0; i < 2; i++) {
+
+    expenses[i] = prompt('Введите обязательную статью расходов?', 'Садик Государственый');
+
+    sum += +prompt('Во сколько это нам встанет?', ''); //в prompt мы получаем строку.  +prompt - получаем число в prompt.
+  };
+  console.log(expenses);
+
+  return sum;
+};
+
+const expensesAmount = getExpensesMonth();
+console.log("Сумма всех обязательных рассходов за месяц:" + expensesAmount);
 
 function getAcumulatedMonth() {
-  return money - expensesMonth; //Тут доходы минус обязательные рассходы
+  return money - expensesAmount; //Тут доходы минус обязательные рассходы
 }
 
 const acumulatedMonth = getAcumulatedMonth(); //Накопления за месяц
