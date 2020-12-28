@@ -12,20 +12,28 @@ const amount2 = +prompt("Во сколько это обойдется?", "");
 const mission = 100000;
 const period = 12;
 
-console.log(addExpenses.toLowerCase().split(", "));
-
 
 let start = function() {
+  let money1 = prompt('Ваш месячный доход?', '');
 
-  if(isNaN(money)) {  //функция isNaN проверяет являеться переданый ей параметр числом или нет. Вернет true если параметр не являеться числом, если являеться числом то false.
-    money = prompt("Ваш месячный доход?", "");
-    console.log('Истина');
-  }else {
-    console.log('лож');
-  }
+
+  while(isNaN(money1)) { //Функция isNaN проверяет, является ли переданный параметр числом или нет. Вернет true, если параметр не является числом и false, если является. 
+    
+  };
 };
 
 start();
+
+
+
+
+
+
+
+console.log(addExpenses.toLowerCase().split(", "));
+
+
+
 
 
 
