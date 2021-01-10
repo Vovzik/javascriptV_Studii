@@ -1,49 +1,34 @@
 "use strict";
 
-
-let isNumber = function(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n);
-};
- 
 let money;
-const income = "Фриланс";
-const addExpenses = prompt(
-  "Перечислите возможные расходы за рассчитываемый период через запятую",
-  ""
-);
-const deposit = confirm("Есть ли у вас депозит в банке?", "");
-const mission = 100000;
-const period = 12;
 
 
-let start = function() {
-   money = prompt('Ваш месячный доход?', '');
+let start = function () {
+  money = prompt("Ваш месячный доход?", "");
 
-
-  /*while(!isNumber(money)) { //Функция isNaN проверяет, является ли переданный параметр числом или нет. Вернет true, если параметр не является числом и false, если является.
-    money = prompt('Ваш месячный доход?', '2000');
-    console.log('Истина');
-  };*/
-
-
-    do{
-      money = prompt('Ваш месячный доход?', '2000');
-      console.log('Истина');
-    }while(!isNumber(money));
-
-
+  do {
+    money = prompt("Ваш месячный доход?", "2000");
+    console.log('true')
+  } while (isNaN(money) || money === '' || money === null);
 };
 
 start();
 
+let appData = {
+  income: {},
+  addIncome: [],
+  expenses: {},
+  addExpenses: [],
+  deposit: false,
+  mission: 50000,
+  period: 3,
 
-
-
-
-
-
-console.log(addExpenses.toLowerCase().split(", "));
-
+  asking: function () {
+    const addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую", "");
+    appData.addExpenses.toLowerCase().split(", ");
+    appData.deposit = confirm("Есть ли у вас депозит в банке?", "");
+  },
+};
 
 
 
@@ -54,30 +39,25 @@ const showTypeOf = function (data) {
 };
 
 showTypeOf(money);
-showTypeOf(deposit);
-showTypeOf(income);
+showTypeOf(appData.deposit);
+showTypeOf(appData.income);
 
 let expenses = [];
 
 function getExpensesMonth() {
   let sum = 0;
 
-  for(let i = 0; i < 2; i++) {
+  for (let i = 0; i < 2; i++) {
+    expenses[i] = prompt("Введите обязательную статью расходов?", "Садик Государственый");
 
-    expenses[i] = prompt('Введите обязательную статью расходов?', 'Садик Государственый');
-    
-
-
-    do{
-      sum += +prompt('Во сколько это обойдется?', '4000'); //в prompt мы получаем строку.  +prompt - получаем число в prompt.
-      console.log(typeof sum);
-    }while(!isNumber(sum));
-    
-  };
+    do {
+      sum = +prompt("Во сколько это обойдется?", "4000"); //в prompt мы получаем строку.  +prompt - получаем число в prompt.
+    } while (isNaN(sum) || sum === '' || sum === null);
+  }
   console.log(expenses);
 
   return sum;
-};
+}
 
 const expensesAmount = getExpensesMonth();
 console.log("Сумма всех обязательных рассходов за месяц:" + expensesAmount);
@@ -87,16 +67,13 @@ function getAcumulatedMonth() {
 }
 
 const acumulatedMonth = getAcumulatedMonth(); //Накопления за месяц
-const getTargetMonth = Math.ceil(mission / acumulatedMonth);
+const getTargetMonth = Math.ceil(appData.mission / acumulatedMonth);
 
-
-
-if(getTargetMonth >= 1) {
+if (getTargetMonth >= 1) {
   console.log("Цель будет достигнута за:" + getTargetMonth + "месяцев");
 } else {
   console.log("Цель не будет достигнута" + getTargetMonth + "месяцев");
 }
-
 
 const budgetDay = Math.floor(acumulatedMonth / 30);
 
