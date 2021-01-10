@@ -1,17 +1,29 @@
 'use strict';
 
-let car = {
-  model: 'mazda',
-  year: 2006,
-  turbo: true,
-  specification: [],
-  style: {
-    color: 'blue',
-  },
+let arr = [1, 2, 3, 4, 5];
+
+
+
+for (const item of arr) {
+  console.log(item);
 };
 
 
-console.log(car['model']);
+delete arr[3];
+console.log('arr: ', arr);
 
-car['place'] = 'city';
-console.log(car);
+let Obj = {
+  a: 3,
+  b: true,
+  c: 'js',
+};
+
+delete Obj.a;
+console.log('Obj: ' + Obj);
+
+
+function test() {
+    console.log(arguments);
+};
+
+test(1, 2, 3, 4, 5);
