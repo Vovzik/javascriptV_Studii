@@ -32,9 +32,9 @@ let appData = {
 				let itemIncome = +prompt('Какой у вас дополнительный заработок?', 'таксую');
 
 				if (isNaN(itemIncome)) {
-					console.log('Истина')
+					
 				}	else {
-					console.log('Лож')
+					appData.asking(itemIncome);
 				}
 				
 
