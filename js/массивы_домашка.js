@@ -17,7 +17,9 @@ let appData = {
   addIncome: [],
   expenses: {},
   addExpenses: [],
-  deposit: false,
+	deposit: false,
+	percentDeposit: null,
+	moneyDeposit: null,
   mission: 50000,
   period: 3,
   budget: money,
@@ -26,9 +28,29 @@ let appData = {
   expensesMonth: null,
 
   asking: function () {
-    const addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую","");
-    //appData.addExpenses.toLowerCase().split(", ");
-    //appData.deposit = confirm("Есть ли у вас депозит в банке?", "");
+			if (confirm('Есть ли у вас дополнительный источник заработка?')) {
+				let itemIncome = +prompt('Какой у вас дополнительный заработок?', 'таксую');
+
+				if (isNaN(itemIncome)) {
+					console.log('Истина')
+				}	else {
+					console.log('Лож')
+				}
+				
+
+
+				let cashIncome = prompt('Сколько в месц вы на этом зарабатываете?', 10000);
+
+				appData.income[itemIncome] = cashIncome;
+
+				console.log(appData.income);
+			}
+
+
+
+    let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую","");
+		appData.addExpenses = addExpenses.toLowerCase().split(", ");
+    appData.deposit = confirm("Есть ли у вас депозит в банке?", "");
 
       for (let i = 0; i < 2; i++) {
           const sum = prompt('Введите обязательную статью рассходов?', 'Кино');
@@ -66,7 +88,19 @@ let appData = {
 
   getTargetMonth: function () {
     return appData.budgetMonth = Math.ceil(appData.mission / appData.getBudget());
-  },
+	},
+	
+
+	getInfoDeposit: function () {
+		 if (appData.deposit) {
+			 appData.percentDeposit = prompt('Какой годовой процент?', '10');
+			 appData.moneyDeposit = prompt('Кака сумма заложена?', 10000);
+		 }
+	},
+
+	calcSavedMoney: function () {
+		return appData.budgetMonth * appData.period;
+	},
 };
 
 appData.asking();
@@ -100,5 +134,11 @@ appData.getStatusIncome();
 
 
 for (let key in appData) {
-  console.log("Наша программа включает в себя данные: " + 'Ключи: ' + ' ' + key + ' ' + 'Значения: ' + ' ' + appData[key]);
+  //console.log("Наша программа включает в себя данные: " + 'Ключи: ' + ' ' + key + ' ' + 'Значения: ' + ' ' + appData[key]);
 }
+
+
+
+
+appData.getInfoDeposit();
+console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
