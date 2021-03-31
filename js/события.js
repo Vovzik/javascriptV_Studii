@@ -1,30 +1,38 @@
-const blog = document.querySelector('.blog');
 
 
-/*blog.onclick = function () {
-
-  if (count === 3) {
-    return 
-  } else {
-    console.log('false')
-  }
+/*let eventFunc = (event) => {
+  console.log(event.type)
+}
 
 
-    count++;
-    console.log('Вы кликнули по square');
+//События input
+
+//document.querySelector('#text').addEventListener('input', eventFunc);
+//document.querySelector('#text').addEventListener('change', eventFunc);
+document.querySelector('#text').addEventListener('keydown', eventFunc);
+document.querySelector('#text').addEventListener('keyup', eventFunc);
+document.querySelector('#text').addEventListener('focus', eventFunc);
+document.querySelector('#text').addEventListener('blur', eventFunc);
+
+
+window.onbeforeunload = function() {
+  return 'Вы действительно хотите уйти со страницы?'
 }*/
 
 
-blog.addEventListener('click', clickNew);
+
+let clickElem = null;
 
 
-let count = 0;
+function greenHundler(event) {
+    if(clickElem) {
+      clickElem.classList.remove('green');
+    }
 
-function clickNew() {
-  count++;
-
-  if (count === 3)  blog.removeEventListener('click', clickNew);
-
-  console.log('кликнули по блоку')
+    clickElem = event.currentTarget;
+    clickElem.classList.add('green');
 }
 
+
+
+document.querySelector('.button').addEventListener('click', greenHundler);
