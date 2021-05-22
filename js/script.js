@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 
 const todoControl = document.querySelector('.todo-control'),
   headerInput = document.querySelector('.header-input'),
@@ -6,17 +6,12 @@ const todoControl = document.querySelector('.todo-control'),
   todoCompleted = document.querySelector('.todo-completed');
 
 
-const todoData = [
-  {
-    value: 'Помыть посуду',
-    completed: false
-  },
 
-  {
-    value: 'Сварить кофе',
-    completed: true
-  }
+const todoData = [
+ 
 ]
+
+
 
 const renderer = () => {
   todoList.textContent = null;
@@ -54,6 +49,10 @@ const renderer = () => {
   });
 }
 
+var myJsonString = JSON.stringify(todoData);
+
+localStorage.myText = myJsonString
+
 
 todoControl.addEventListener('submit', (event) => {
   event.preventDefault(todoControl);
@@ -64,9 +63,35 @@ todoControl.addEventListener('submit', (event) => {
     completed: false
   }
 
+
   todoData.push(newTodo);
 
   renderer();
 })
 
-renderer();
+renderer(); 
+
+
+/* /* localStorage 
+
+const  inputText = document.getElementById('myText'),
+myBtn = document.getElementById('myBtn'),
+text = document.getElementById('text');
+
+
+function localText() {
+  /* text.textContent = localStorage.myText; 
+
+  text.textContent = localStorage.getItem('memory');
+}
+
+
+myBtn.addEventListener('click', () => {
+   localStorage.myText = inputText.value; 
+  localStorage.setItem('memory', inputText.value)
+
+  localText();
+});
+
+
+localText(); */
