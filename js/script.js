@@ -1,34 +1,31 @@
-let obj = {
-  x: 10,
-  y: 15,
+/* let car = {
+  doors: 4,
+  turbocharhing: false,
+  ride: function () {
+    console.log('Машина едет');
+  }
+}
+
+let newCar = Object.create(car);
+
+newCar.model = 'mazda 3';
+
+console.log(newCar)
+
+console.log(newCar.__proto__.hasOwnProperty('doors'));
+/* тут мы проверяем есть ли у прототипа это свойство */
+
+
+/* console.log(car.isPrototypeOf(newCar)); */
+//Проверяем являеться ли обьект car прототипам обьекта newCar */
+
+
+function Car () {
+  this.model = 'Mazda';
 }
 
 
-//Если мы просто в функции вызываем this то получим глобальный метод window. Если метод this вызываем в обьекте то this будет являться обьектом.  
-
-//Если будем вызывать внутры переменой функцию обьекта то this будет глобальным window
+let car1 = new Car();
 
 
-
-
-
-function newTest() {
-  console.log(this)
-}
-
-function hardBin(hard) {
-  newTest.apply(hard)
-}
-
-hardBin(obj);
-
-let foo = newTest.bind(obj);
-
-foo();
-
-
-/* newTest.apply(obj);
-newTest.call(obj);
- */
-
-
+console.log('car1: ' + car1)
