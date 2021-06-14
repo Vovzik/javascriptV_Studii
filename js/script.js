@@ -20,12 +20,25 @@ console.log(newCar.__proto__.hasOwnProperty('doors'));
 //Проверяем являеться ли обьект car прототипам обьекта newCar */
 
 
-function Car () {
-  this.model = 'Mazda';
+function Car(model, color) {
+  this.model = model;
+  this.color = color;
+
+}
+
+Car.prototype.ride = function() {
+   console.log('exat')
 }
 
 
-let car1 = new Car();
+let car1 = new Car('mazda', 'red');
+
+console.log(car1)
+console.dir(Car);
 
 
-console.log('car1: ' + car1)
+let carTest = {
+  model: 'mazda'
+}
+
+
